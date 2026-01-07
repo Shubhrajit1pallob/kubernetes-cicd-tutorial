@@ -44,6 +44,8 @@ jobs:
           else
             sed -i "s|image: ghcr.io/shubhrajit1pallob/grade-api-gitops:.*|image: ghcr.io/shubhrajit1pallob/grade-api-gitops:${{ github.sha }}|g" deployment.yaml
           fi
+
+          cat deployment.yaml
           
           # Commit changes
           git config --global user.name "GitHub Actions"
