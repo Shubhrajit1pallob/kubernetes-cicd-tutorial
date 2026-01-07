@@ -24,8 +24,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/grade-api-gitops:latest
+            ghcr.io/grade-api-gitops:${{ github.sha }}
       - name: Update GitOps repository
         shell: bash
         env:
@@ -40,9 +40,9 @@ jobs:
           cd gitops
           
           if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -i '' "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
+            sed -i '' "s|image: ghcr.io/grade-api-gitops:.*|image: ghcr.io/grade-api-gitops:${{ github.sha }}|g" deployment.yaml
           else
-            sed -i "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
+            sed -i "s|image: ghcr.io/grade-api-gitops:.*|image: ghcr.io/grade-api-gitops:${{ github.sha }}|g" deployment.yaml
           fi
           
           # Commit changes
